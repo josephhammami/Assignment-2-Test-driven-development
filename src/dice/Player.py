@@ -1,3 +1,7 @@
+""" 
+This class will hold the core functionalities of the player (user), playing our dice game.
+"""
+
 class Player:
     """ 
     A class representing a player in our dice game.
