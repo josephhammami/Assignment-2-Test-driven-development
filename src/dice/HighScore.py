@@ -26,4 +26,3 @@ class HighScore():
         Returns the best record from the high score table.
         """
         return min(self.scores)
-  
