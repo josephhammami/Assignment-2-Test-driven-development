@@ -4,6 +4,12 @@ class Histogram:
         self.data = {player: [0] * 6 for player in players}
 
     def add_roll(self, player, roll):
+        """_summary_
+
+        Args:
+            player (_type_): _description_
+            roll (_type_): _description_
+        """
         self.data[player][roll - 1] += 1
 
     def display(self):

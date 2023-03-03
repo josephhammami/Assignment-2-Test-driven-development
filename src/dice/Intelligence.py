@@ -1,6 +1,10 @@
 class Intelligence:
-    
     def __init__(self, level):
+        """_summary_
+
+        Args:
+            level (_type_): _description_
+        """
         self.level = level
 
     def roll_again(self, score):
