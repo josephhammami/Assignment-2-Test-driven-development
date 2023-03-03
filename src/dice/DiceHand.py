@@ -6,9 +6,11 @@ class DiceHand:
         self.roll_result = None
         
     def roll_dice(self):
+        score = 0
         Dice = dice()
-        self.roll_result = Dice.roll()
+        score += Dice.roll()
+        print(f"Your current roll is {Dice.roll()}")
+        print(f"Your total roll is {score}")         
         
-hand = DiceHand()
-hand.roll_dice()
-print(hand.roll_result) 
+roll = DiceHand()
+roll.roll_dice()
