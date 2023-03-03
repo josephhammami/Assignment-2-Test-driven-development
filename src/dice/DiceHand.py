@@ -3,14 +3,23 @@ from Dice import dice
 class DiceHand:
     
     def __init__(self):
-        self.roll_result = None
-        
+        self.player_score = 0
+        self.dice = dice()
+    
     def roll_dice(self):
-        score = 0
-        Dice = dice()
-        score += Dice.roll()
-        print(f"Your current roll is {Dice.roll()}")
-        print(f"Your total roll is {score}")         
+    
+        player_roll = self.dice.roll()
         
-roll = DiceHand()
-roll.roll_dice()
+        if player_roll == 1:
+            self.player_score = 0
+            print(f"Uhoh you rolled a {player_roll}! You lose all your points!")
+        
+            
+        else:
+            self.player_score += player_roll
+            print(f"You rolled a {player_roll}. Your total score is {self.player_score}!")
+        
+    
+    def hold(self):
+       
+        print(f"You're holding. Your current score is {self.player_score}.")
