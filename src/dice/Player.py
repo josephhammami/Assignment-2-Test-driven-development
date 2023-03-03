@@ -40,3 +40,4 @@ class Player:
         """
         new_name = input(">> ")
         self.set_name(new_name)
+        
