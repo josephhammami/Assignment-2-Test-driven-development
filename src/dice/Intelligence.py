@@ -5,6 +5,9 @@ class Intelligence:
     def __init__(self, level):
         self.level = level
         self.cpu_score = 0
+        
+    def set_level(self, new_level):
+        self.level = new_level
 
     def cpu_rolling(self):
         
@@ -20,16 +23,16 @@ class Intelligence:
                 cpu_roll = 6
         
         else:
-            raise ValueError(f"Invalid difficulty level: {self.level}")    
+            raise ValueError(f"\nInvalid difficulty level: {self.level}")    
         
         
         if cpu_roll == 1:
             self.cpu_score = 0
-            print(f"The CPU rolled a {cpu_roll}! It loses all its points!")
+            print(f"\nThe CPU rolled a {cpu_roll}! It loses all its points!")
             
         else:
             self.cpu_score += cpu_roll
-            print(f"CPU rolled a {cpu_roll}. Its total score is {self.cpu_score}!") 
+            print(f"\nCPU rolled a {cpu_roll}. Its total score is {self.cpu_score}!") 
             
     def cpu_hold(self):
-         print(f"Cpu is holding. Current score of the CPU is {self.cpu_score}.")
+         print(f"\nCpu is holding. Current score of the CPU is {self.cpu_score}.")

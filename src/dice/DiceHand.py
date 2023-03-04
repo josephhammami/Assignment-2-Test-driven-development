@@ -6,20 +6,20 @@ class DiceHand:
         self.player_score = 0
         self.dice = dice()
     
-    def roll_dice(self):
-    
+    def roll_dice(self, player):
+        
         player_roll = self.dice.roll()
         
         if player_roll == 1:
             self.player_score = 0
-            print(f"Uhoh you rolled a {player_roll}! You lose all your points!")
+            print(f"\nUhoh {player} rolled a {player_roll}! They lose all their points!")
         
             
         else:
             self.player_score += player_roll
-            print(f"You rolled a {player_roll}. Your total score is {self.player_score}!")
+            print(f"{player} rolled a {player_roll}. Their total score is {self.player_score}!")
         
     
-    def hold(self):
+    def hold(self, player):
        
-        print(f"You're holding. Your current score is {self.player_score}.")
+        print(f"\n{player} is holding. Their current score is {self.player_score}.")

@@ -7,8 +7,6 @@ class Player:
     A class representing a player in our dice game.
     """
 
-    name = ""
-
     def __init__(self, name):
         """ 
         Constructs a new Player object.
@@ -26,6 +24,9 @@ class Player:
         - new_name (str): the new name of the player.
         """
         self.name = new_name
+        
+    def get_name(self):
+        return self.name
 
     def choose_name(self):
         """
