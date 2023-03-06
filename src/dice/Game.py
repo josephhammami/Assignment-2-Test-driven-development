@@ -38,7 +38,7 @@ class Game():
             print("| \u2022 To view the high score table, press 't'       |")
             print("| \u2022 To activate the cheat, press 'c'              |")
             print("| \u2022 To restart the game, press 'g'                |")
-            print("| \u2022 To exit the game, press 'r'                   |")
+            print("| \u2022 To exit the game, press 'e'                   |")
             print("+-------------------------------------------------+")
             
         elif type == "2": 
@@ -53,11 +53,12 @@ class Game():
             print("| \u2022 If you wish to change your name, press 'n'    |")
             print("| \u2022 To view the high score table, press 't'       |")
             print("| \u2022 To restart the game, press 'g'                |")
-            print("| \u2022 To exit the game, press 'r'                   |")
+            print("| \u2022 To exit the game, press 'e'                   |")
             print("+-------------------------------------------------+")
             
         
     def setup_game(self):
+       
         self.player_one = Player("")
         self.player_two = Player("")
         
@@ -88,6 +89,8 @@ class Game():
          
     def player_versus_cpu(self):
         player_turn = DiceHand()
+        player_score_holder = HighScore()
+        player_rounds = 0
         
         self.print_info("1")
         
@@ -96,27 +99,28 @@ class Game():
         self.cpu_level = Intelligence(cpu_difficulty)
         
         while True:
-            self.seperator()
             print(f"\n{self.player_one.get_name()} would you like to roll or hold?")
             action = input(">> ")
             
             if action.lower() == "r":
                 player_turn.roll_dice(self.player_one.get_name())
+                player_rounds += 1
                 
                 if player_turn.player_score >= 100:
                     print("Congrats! You won!")
-                    break
-                
+                    player_score_holder.add_record_player_one(self.player_one.get_name(), player_rounds)
+                    
                 self.cpu_turn()
                 
                 if self.cpu_level.cpu_score >= 100:
                     print("The CPU wins!")
-                    break
+                    
                 
             elif action.lower() == "h":
                 player_turn.hold(self.player_one.get_name())
+                player_rounds +=1
                 self.seperator()
-            
+             
             elif action.lower() == "d":
                 print("\nWhat would you like to change the difficulty to?")
                 alter_difficulty = input(">> ")
@@ -132,6 +136,12 @@ class Game():
                 self.cheat(self.player_one.get_name(), player_turn.player_score)
                 break
             
+            elif action.lower() == "t":
+                player_score_holder.print_highscore_singleplayer(self.player_one.get_name(), player_score_holder.get_record_player_one())
+                
+            elif action.lower() == "e":
+                break
+            
     
     def cpu_turn(self):
         self.seperator()
@@ -144,9 +154,13 @@ class Game():
             self.cpu_level.cpu_hold()
     
     def player_versus_player(self):
-        
+
         player_one_turn = DiceHand()
         player_two_turn = DiceHand()
+        player_one_score_holder = HighScore()
+        player_two_score_holder = HighScore()
+        player_one_rounds = 0
+        player_two_rounds = 0
         self.print_info("2")
         
         
@@ -163,24 +177,31 @@ class Game():
             if action_player_one.lower() == "r":
                 player_one_turn.roll_dice(self.player_one.get_name())
                 self.seperator()
+                player_one_rounds += 1
                 
                 if player_one_turn.player_score >= 100:
                     print(f"{self.player_one.get_name()} won!")
+                    player_one_score_holder.add_record_player_one(self.player_one.get_name(), player_one_rounds)
+                    
             
             if action_player_two.lower() == "r":
                 player_two_turn.roll_dice(self.player_two.get_name())
                 self.seperator()
+                player_two_rounds += 1
                 
                 if player_two_turn.player_score >= 100:
                     print(f"{self.player_two.get_name()} won!")
+                    player_two_score_holder.add_record_player_two(self.player_two.get_name(), player_two_rounds)
                     
             elif action_player_one.lower() == "h":
                 player_one_turn.hold(self.player_one.get_name())
                 self.seperator()
+                player_one_rounds += 1
                 
             elif action_player_two.lower() == "h":
                 player_two_turn.hold(self.player_two.get_name())
                 self.seperator()
+                player_two_rounds += 1
             
             elif action_player_one.lower() == "n": 
                 print(f"\n {self.player_one.get_name()} what would you like to change your new name to?")
@@ -191,13 +212,24 @@ class Game():
                 print(f"\n {self.player_two.get_name()} what would you like to change your new name to?")
                 self.player_two.change_name()
                 self.seperator()
+                
+            elif action_player_one.lower() == "t":
+                player_one_score_holder.print_highscore_multiplayer(self.player_one.get_name(), self.player_two.get_name(), player_one_score_holder.get_record_player_one(), player_two_score_holder.get_record_player_two())
+            
+            elif action_player_two.lower() == "t":
+                player_two_score_holder.print_highscore_multiplayer(self.player_one.get_name(), self.player_two.get_name(), player_one_score_holder.get_record_player_one(), player_two_score_holder.get_record_player_two())
+                  
+            elif action_player_one.lower() == "e":
+                break
+            
+            elif action_player_two.lower() == "e":
+                break
       
     
     def cheat(self, player_name, player_score):
         player_score = 100
         print(f"{player_name} cheated and won the game!")
         return player_score
-        
     
     
     def seperator(self):

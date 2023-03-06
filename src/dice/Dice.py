@@ -8,7 +8,4 @@ class dice:
     
     def getRoll(self):
         return self.roll
-    
-    
-    
             

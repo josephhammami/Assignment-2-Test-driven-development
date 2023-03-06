@@ -22,4 +22,4 @@ class DiceHand:
     
     def hold(self, player):
        
-        print(f"\n{player} is holding. Their current score is {self.player_score}.")
+        print(f"{player} is holding. Their current score is {self.player_score}.")
