@@ -20,12 +20,8 @@ class Intelligence:
         elif self.level == "hard".lower():
             cpu_roll = random.randint(1,10)
             if cpu_roll > 6:
-                cpu_roll = 6
-        
-        else:
-            raise ValueError(f"\nInvalid difficulty level: {self.level}")    
-        
-        
+                cpu_roll = 6  
+    
         if cpu_roll == 1:
             self.cpu_score = 0
             print(f"\nThe CPU rolled a {cpu_roll}! It loses all its points!")
@@ -35,4 +31,4 @@ class Intelligence:
             print(f"\nCPU rolled a {cpu_roll}. Its total score is {self.cpu_score}!") 
             
     def cpu_hold(self):
-         print(f"\nCpu is holding. Current score of the CPU is {self.cpu_score}.")
+         print(f"\nCPU is holding. Current score of the CPU is {self.cpu_score}.")

@@ -5,6 +5,9 @@ class DiceHand:
     def __init__(self):
         self.player_score = 0
         self.dice = dice()
+        
+    def set_player_score(self, new_player_score):
+        self.player_score = new_player_score
     
     def roll_dice(self, player):
         
