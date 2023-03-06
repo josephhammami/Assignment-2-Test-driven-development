@@ -1,18 +1,21 @@
 class Histogram:
+    """ A class representing the number of rolls make by a player in a histogram."""
     def __init__(self, players):
         self.players = players
         self.data = {player: [0] * 6 for player in players}
 
     def add_roll(self, player, roll):
         """_summary_
-
+        Adds rolls
+        
         Args:
-            player (_type_): _description_
-            roll (_type_): _description_
+            player (_type_): player 
+            roll (_type_): dice roll
         """
         self.data[player][roll - 1] += 1
 
     def display(self):
+        """graphes the number of rolls made by a player""" 
         print("  Player Histogram")
         print("--------------------")
         for player in self.players:
