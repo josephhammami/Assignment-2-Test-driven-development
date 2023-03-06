@@ -10,22 +10,20 @@ class Player:
     def __init__(self, name):
         """ 
         Constructs a new Player object.
-        
-        Parameters:
-        - name (str): the initial name of the player.
         """
         self.name = name
 
     def set_name(self,new_name):
         """ 
-        sets the name of the player with the new given value.
+        Sets the name of the player with the new given value.
         
-        Parameters:
-        - new_name (str): the new name of the player.
         """
         self.name = new_name
-        
+
     def get_name(self):
+        """
+        Get the name of the current player.
+        """
         return self.name
 
     def choose_name(self):
