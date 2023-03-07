@@ -1,15 +1,14 @@
 """
-The game module will import the Game class which has the core functionality of the gameplay 
-of our dice game and it also has all the other classes imported to it.
+The game module will import the Shell Class which has the command line interface that will1
+display gameplay of our dice game and it also has access to our other classes.
 """
-from Game import Game
+from Shell import Shell
 
 def main():
     """
-    The game will run an instance of the Game class which will in turn run our game.
+    The game will run an instance of the Shell class which will in turn run our game.
     """
-    new_game = Game()
-    new_game.setup_game()
+    Shell().cmdloop()
 
 if __name__ == "__main__":
     main()

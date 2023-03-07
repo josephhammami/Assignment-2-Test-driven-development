@@ -6,13 +6,21 @@ import random
 from Player import Player
 from HighScore import HighScore
 from Intelligence import Intelligence
-from Histogram import Histogram
 from DiceHand import DiceHand
 
 class Game():
     """
     This class holds the core functionalities of our dice game.
     """
+
+    def __init__(self, player_one, player_two, cpu_level):
+        """
+        Constructs objects from the classes: "Player" and "Intelligence".
+        """
+
+        self.player_one = player_one
+        self.player_two = player_two
+        self.cpu_level = cpu_level
 
     def print_rules(self):
         """
@@ -21,47 +29,12 @@ class Game():
         print("+----------------------------------------------------------------------+")
         print("|                            Rules of Pig                              |")
         print("+----------------------------------------------------------------------+")
-        print("| \u2022          Each player takes turns rolling a die                     |")
-        print("| \u2022          You score points equal to the sum of your rolls           |")
-        print("| \u2022          If you roll a 1, you lose all your points                 |")
-        print("| \u2022          You can choose to hold and pass your turn to the computer |")
-        print("| \u2022          The first reach 100 points wins                           |")
+        print("| \u2022          Each player takes turns rolling a die.                    |")
+        print("| \u2022          You score points equal to the sum of your rolls.          |")
+        print("| \u2022          If you roll a 1, you lose all your points.                |")
+        print("| \u2022          You can hold and pass your turn to the CPU/player.        |")
+        print("| \u2022          The first to reach 100 points wins!                       |")
         print("+----------------------------------------------------------------------+")
-
-    def print_info(self, game_mode):
-        """
-        Prints out general information about our dice game. 
-        One is for single player mode and the other for multiplayer mode.
-        """
-        if  game_mode == "1":
-            print("\n+-------------------------------------------------+")
-            print("|                  Information                    |")
-            print("+-------------------------------------------------+")
-            print("| \u2022 The game will now begin!                      |")
-            print("| \u2022 To roll press 'r'                             |")
-            print("| \u2022 To hold press 'h'                             |")
-            print("| \u2022 If you wish to alter the difficulty press 'd' |")
-            print("| \u2022 If you wish to change your name, press 'n'    |")
-            print("| \u2022 To activate the cheat, press 'c'              |")
-            print("| \u2022 To restart the game, press 'g'                |")
-            print("| \u2022 To exit the game, press 'e'                   |")
-            print("+-------------------------------------------------+")
-            print("\nThe highscore will be seen at the end of the game, but may only be added if you finish a game.")
-
-        elif game_mode == "2":
-            #Cheating is now allowed against other players
-            print("\n+-------------------------------------------------+")
-            print("|                  Information                    |")
-            print("+-------------------------------------------------+")
-            print("| \u2022 The game will now begin!                      |")
-            print("| \u2022 To roll press 'r'                             |")
-            print("| \u2022 To hold press 'h'                             |")
-            print("| \u2022 If you wish to alter the difficulty press 'd' |")
-            print("| \u2022 If you wish to change your name, press 'n'    |")
-            print("| \u2022 To restart the game, press 'g'                |")
-            print("| \u2022 To exit the game, press 'e'                   |")
-            print("+-------------------------------------------------+")
-            print("\nThe highscore will be seen at the end of the game, but may only be added if you finish a game.")
 
     def setup_game(self):
         """
@@ -82,15 +55,18 @@ class Game():
             self.player_versus_cpu()
 
         elif option == "2":
-            print(f"Go ahead and choose your names!")
+            print("Go ahead and choose your names!")
 
-            print(f"\nPlayer 1:")
+            print("\nPlayer 1:")
             self.player_one.choose_name()
 
-            print(f"\nPlayer 2:")
+            print("\nPlayer 2:")
             self.player_two.choose_name()
 
             self.player_versus_player()
+
+        else:
+            print("Please enter a valid input!")
 
     def player_versus_cpu(self):
         """
@@ -103,10 +79,7 @@ class Game():
 
         while True:
 
-            self.print_info("1")
-
             while True:
-
                 print("\nBefore we begin, go ahead and decide the CPU's difficulity! (easy/medium/hard)")
                 cpu_difficulty = input(">> ")
 
@@ -170,10 +143,12 @@ class Game():
                 print("\nHere's your single player highscore!")
                 player_score_holder.print_highscore_singleplayer(self.player_one.get_name(), player_score_holder.get_record_player_one_singleplayer())
                 print("(The record represents how many rounds it took for you to reach 100 points. Try to beat it!)")
+
                 print("\nWould you like to play again? (y/n)")
                 choice = input(">> ")
 
                 if choice.lower() == "n":
+                    print("Thanks for playing our game!")
                     exit()
 
                 elif choice.lower() == "y":
@@ -210,7 +185,6 @@ class Game():
 
 
         while True:
-            self.print_info("2")
 
             while True:
 
@@ -276,9 +250,10 @@ class Game():
                     print("Please enter a valid input!")
 
             while True:
-                print("\nHere's your single player highscore!")
+                print("\nHere's your multiplayer highscore!")
                 player_one_score_holder.print_highscore_multiplayer(self.player_one.get_name(), self.player_two.get_name(), player_one_score_holder.get_record_player_one(), player_two_score_holder.get_record_player_two())
                 print("(The record represents how many rounds it took for you to reach 100 points. Try to beat it!)")
+
                 print("\nWould you like to play again? (y/n)")
                 choice = input(">> ")
 
@@ -288,6 +263,7 @@ class Game():
                     break
 
                 elif choice.lower() == "n":
+                    print("Thanks for playing our game!")
                     exit()
 
                 else:
@@ -308,6 +284,3 @@ class Game():
         players actions throughout the game.
         """
         print("\n------------------------------------------------------------------")
-
-new_game = Game()
-new_game.setup_game()

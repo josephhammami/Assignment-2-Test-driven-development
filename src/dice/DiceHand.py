@@ -15,12 +15,14 @@ class DiceHand:
         """
         self.player_score = 0
         self.dice = dice()
+        
 
     def set_player_score(self, new_player_score):
         """
         Sets the player's score to the given new score.
         """
         self.player_score = new_player_score
+
 
     def roll_dice(self, player):
         """
