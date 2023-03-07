@@ -12,7 +12,7 @@ class Game():
     """
     This class holds the core functionalities of our dice game.
     """
-
+    
     def __init__(self, player_one, player_two, cpu_level):
         """
         Constructs objects from the classes: "Player" and "Intelligence".

@@ -100,3 +100,4 @@ class Intelligence_test(unittest.TestCase):
 
 if __name__ == '__main':
     unittest.main()
+    
