@@ -52,6 +52,8 @@ class Shell(cmd.Cmd):
         print("\n+-------------------------------------------------+")
         print("|                  Information                    |")
         print("+-------------------------------------------------+")
+        print("|     (MAY ONLY BE USED DURING ACTIVE GAME)       |")
+        print("+-------------------------------------------------+")
         print("| \u2022 The game will now begin!                      |")
         print("| \u2022 To roll press 'r'                             |")
         print("| \u2022 To hold press 'h'                             |")
@@ -61,7 +63,7 @@ class Shell(cmd.Cmd):
         print("| \u2022 To cheat, press 'c' (singleplayer)            |")
         print("| \u2022 To exit the game, press 'e'                   |")
         print("+-------------------------------------------------+")
-        print("\nThe highscore will be seen at the end of the game, but may only be added if you finish a game.")
+        print("\nInitial highscore will be added when first ever game is played.")
 
     def do_notify(self, arg):
         """
