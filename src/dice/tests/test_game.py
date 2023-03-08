@@ -1,10 +1,9 @@
-"""
-Necessary modules to run the tests
-"""
 import unittest
+import io
 from unittest.mock import patch, MagicMock
 from io import StringIO
 from Game import Game
+
 
 
 class Game_Test(unittest.TestCase):
@@ -54,6 +53,24 @@ class Game_Test(unittest.TestCase):
         expected_output = f"{player_name} cheated and won the game!\n"
         self.assertEqual(mock_stdout.getvalue(), expected_output)
         self.assertEqual(new_score, 100)
+        
+        
+    def test_print_rules(self):
+        game = Game(None, None, None)
+        expected_output = (
+            "+----------------------------------------------------------------------+\n"
+            "|                            Rules of Pig                              |\n"
+            "+----------------------------------------------------------------------+\n"
+            "| •          Each player takes turns rolling a die.                    |\n"
+            "| •          You score points equal to the sum of your rolls.          |\n"
+            "| •          If you roll a 1, you lose all your points.                |\n"
+            "| •          You can hold and pass your turn to the CPU/player.        |\n"
+            "| •          The first to reach 100 points wins!                       |\n"
+            "+----------------------------------------------------------------------+\n"
+        )
+        with patch('sys.stdout', new=io.StringIO()) as fake_out:
+            game.print_rules()
+            self.assertEqual(fake_out.getvalue(), expected_output)
 
 
 if __name__ == "__main__":
