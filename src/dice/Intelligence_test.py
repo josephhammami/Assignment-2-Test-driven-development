@@ -1,6 +1,6 @@
 import unittest
 import random
-from Intelligence import Intelligence
+from Intelligence import Intelligence 
 
 class Intelligence_test(unittest.TestCase):
 
@@ -17,7 +17,7 @@ class Intelligence_test(unittest.TestCase):
         (inclusive) when the level is set to "easy"."""
         # Seed the random number generator to ensure reproducible results
         random.seed(1)
-
+        self.intelligence.set_level("easy")
         # Call the cpu_rolling method to generate a random number
         self.intelligence.cpu_rolling()
 
@@ -43,7 +43,7 @@ class Intelligence_test(unittest.TestCase):
         # for a "medium" level roll
         self.assertIn(self.intelligence.cpu_score, range(1, 7))
 
-
+    
     def test_set_level_hard(self):
         """Test that the CPU can roll a random number between 1 and 10,
         inclusive, but if the number is greater than 6 it should be set to 6
@@ -71,7 +71,7 @@ class Intelligence_test(unittest.TestCase):
             self.intelligence.cpu_rolling()
     
         
-
+        
     def test_cpu_rolling(self):
         """Tests the CPU rolling method."""
         random.seed(1)
@@ -100,7 +100,3 @@ class Intelligence_test(unittest.TestCase):
 
 if __name__ == '__main':
     unittest.main()
-<<<<<<< Updated upstream:src/dice/tests/test_intelligence.py
-    
-=======
->>>>>>> Stashed changes:src/dice/Intelligence_test.py
