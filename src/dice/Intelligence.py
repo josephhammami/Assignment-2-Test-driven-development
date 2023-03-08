@@ -32,11 +32,15 @@ class Intelligence:
 
         elif self.level == "medium".lower():
             cpu_roll = random.randint(1,6)
+            if self.cpu_score + cpu_roll > 6:
+                cpu_roll = 6 - self.cpu_score
 
         elif self.level == "hard".lower():
             cpu_roll = random.randint(1,10)
             if cpu_roll > 6:
                 cpu_roll = 6
+            if self.cpu_score + cpu_roll > 6:
+                cpu_roll = 6 - self.cpu_score
 
         if cpu_roll == 1:
             self.cpu_score = 0

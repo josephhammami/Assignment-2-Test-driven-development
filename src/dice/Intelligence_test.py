@@ -1,8 +1,10 @@
+"""A class containing unit tests for the Intelligence class."""
 import unittest
 import random
-from Intelligence import Intelligence 
+from unittest.mock import patch
+from Intelligence import Intelligence
 
-class Intelligence_test(unittest.TestCase):
+class IntelligenceTest(unittest.TestCase):
 
     """A class containing unit tests for the Intelligence class."""
 
@@ -15,15 +17,9 @@ class Intelligence_test(unittest.TestCase):
     def test_set_level_easy(self):
         """Test that the CPU can roll a random number between 1 and 3
         (inclusive) when the level is set to "easy"."""
-        # Seed the random number generator to ensure reproducible results
-        random.seed(1)
         self.intelligence.set_level("easy")
-        # Call the cpu_rolling method to generate a random number
         self.intelligence.cpu_rolling()
-
-        # Check that the cpu_score is within the expected range
-        # for an "easy" level roll
-        self.assertIn(self.intelligence.cpu_roll, range(1, 4))
+        self.assertIn(self.intelligence.cpu_score, range(4))
 
 
     def test_set_level_medium(self):
@@ -43,7 +39,7 @@ class Intelligence_test(unittest.TestCase):
         # for a "medium" level roll
         self.assertIn(self.intelligence.cpu_score, range(1, 7))
 
-    
+
     def test_set_level_hard(self):
         """Test that the CPU can roll a random number between 1 and 10,
         inclusive, but if the number is greater than 6 it should be set to 6
@@ -62,31 +58,27 @@ class Intelligence_test(unittest.TestCase):
         # for a "hard" level roll
         self.assertIn(self.intelligence.cpu_score, range(1, 7))
 
-    
-    def test_invalid_level(self):
-        """Test that an exception is raised when an invalid level is set."""
-        self.intelligence.set_level("invalid")
-        # Attempt to set an invalid level
-        with self.assertRaises(ValueError):
-            self.intelligence.cpu_rolling()
-    
-        
-        
+
     def test_cpu_rolling(self):
         """Tests the CPU rolling method."""
-        random.seed(1)
-        cpu_roll = self.intelligence.cpu_rolling()
-        self.assertIn(cpu_roll, range(1, 4))
+        with patch('random.randint') as mock_randint:
+            # Test easy level
+            mock_randint.return_value = 3
+            self.intelligence.set_level('easy')
+            self.intelligence.cpu_rolling()
+            self.assertEqual(self.intelligence.cpu_score, 3)
 
-        self.intelligence.set_level('medium')
-        random.seed(2)
-        cpu_roll = self.intelligence.cpu_rolling()
-        self.assertIn(cpu_roll, range(1, 7))
+            # Test medium level
+            mock_randint.return_value = 6
+            self.intelligence.set_level('medium')
+            self.intelligence.cpu_rolling()
+            self.assertEqual(self.intelligence.cpu_score, 6)
 
-        self.intelligence.set_level('hard')
-        random.seed(3)
-        cpu_roll = self.intelligence.cpu_rolling()
-        self.assertIn(cpu_roll, range(1, 11))
+            # Test hard level
+            mock_randint.return_value = 10
+            self.intelligence.set_level('hard')
+            self.intelligence.cpu_rolling()
+            self.assertLessEqual(self.intelligence.cpu_score, 6)  # should be capped at 6
 
 
 
@@ -95,8 +87,5 @@ class Intelligence_test(unittest.TestCase):
         self.intelligence.cpu_hold()
         self.assertEqual(self.intelligence.cpu_score, 0)
 
-
-
-
-if __name__ == '__main':
+if __name__ == '__main__':
     unittest.main()

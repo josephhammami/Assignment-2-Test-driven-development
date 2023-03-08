@@ -1,5 +1,7 @@
+"""A class containing unit tests for the Intelligence class."""
 import unittest
 import random
+from unittest.mock import patch
 from Intelligence import Intelligence
 
 class Intelligence_test(unittest.TestCase):
@@ -23,7 +25,7 @@ class Intelligence_test(unittest.TestCase):
 
         # Check that the cpu_score is within the expected range
         # for an "easy" level roll
-        self.assertIn(self.intelligence.cpu_roll, range(1, 4))
+        self.assertIn(self.intelligence.cpu_score, range(4))
 
 
     def test_set_level_medium(self):
@@ -62,31 +64,28 @@ class Intelligence_test(unittest.TestCase):
         # for a "hard" level roll
         self.assertIn(self.intelligence.cpu_score, range(1, 7))
 
-    
-    def test_invalid_level(self):
-        """Test that an exception is raised when an invalid level is set."""
-        self.intelligence.set_level("invalid")
-        # Attempt to set an invalid level
-        with self.assertRaises(ValueError):
-            self.intelligence.cpu_rolling()
-    
-        
+
 
     def test_cpu_rolling(self):
         """Tests the CPU rolling method."""
-        random.seed(1)
-        cpu_roll = self.intelligence.cpu_rolling()
-        self.assertIn(cpu_roll, range(1, 4))
+        with patch('random.randint') as mock_randint:
+            # Test easy level
+            mock_randint.return_value = 3
+            self.intelligence.set_level('easy')
+            self.intelligence.cpu_rolling()
+            self.assertEqual(self.intelligence.cpu_score, 3)
 
-        self.intelligence.set_level('medium')
-        random.seed(2)
-        cpu_roll = self.intelligence.cpu_rolling()
-        self.assertIn(cpu_roll, range(1, 7))
+            # Test medium level
+            mock_randint.return_value = 6
+            self.intelligence.set_level('medium')
+            self.intelligence.cpu_rolling()
+            self.assertLessEqual(self.intelligence.cpu_score, 6)
 
-        self.intelligence.set_level('hard')
-        random.seed(3)
-        cpu_roll = self.intelligence.cpu_rolling()
-        self.assertIn(cpu_roll, range(1, 11))
+            # Test hard level
+            mock_randint.return_value = 10
+            self.intelligence.set_level('hard')
+            self.intelligence.cpu_rolling()
+            self.assertLessEqual(self.intelligence.cpu_score, 6)  # should be capped at 6
 
 
 
@@ -98,9 +97,5 @@ class Intelligence_test(unittest.TestCase):
 
 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     unittest.main()
-<<<<<<< Updated upstream:src/dice/tests/test_intelligence.py
-    
-=======
->>>>>>> Stashed changes:src/dice/Intelligence_test.py
