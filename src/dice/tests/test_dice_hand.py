@@ -1,8 +1,10 @@
 import unittest
+
 from DiceHand import DiceHand
 
 
 class TestDiceHand(unittest.TestCase):
+
     def setUp(self):
         """" Initializes a DiceHand object """
         self.DiceHand = DiceHand()
@@ -12,7 +14,6 @@ class TestDiceHand(unittest.TestCase):
         self.DiceHand.dice.roll = lambda: 2
         self.DiceHand.roll_dice('Test')
         self.assertEqual(self.DiceHand.player_score, 2)
-        
         """" The dice roll always return a 0  """
         self.DiceHand.dice.roll = lambda: 1
         self.DiceHand.roll_dice('Test')
