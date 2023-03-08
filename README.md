@@ -35,14 +35,22 @@ The project includes the following classes:
 - "Shell": This class implements the terminal interface for the game.
 - "main": This class executes an instance of the Shell class to begin the game in the terminal.
 
+  #### CPU INTELLIGENCE IMPLEMENTATION
+  
+  The CPU has different difficulty levels to it in order to make the gameplay easier/harder for the user playing. The difficulties works as follow:
+   
+  - "Easy": The CPU can only roll a die from 1,3. 
+  - "Medium": The CPU can roll a die from 1,6 (Same as the Player)
+  - "Hard": The CPU can roll a die from 1,10. If it rolls a number above 6, it will count as a rolled 6.
+
 ## Getting Started <a name = "getting_started"></a>
 
 ### Installing
 
 1. Clone this reporsitory to your local machine: [rep](https://github.com/josephhammami/Assignment-2-Test-driven-development)
 2. Install a Python virtual environment and activate it.
-# Create the virtual environment
-  make venv
+#### Create the virtual environment
+     make venv
 3. Install Python 3
 3. Install the dependent packages in `requirements.txt` by running `make install -r requirements.txt`
 
