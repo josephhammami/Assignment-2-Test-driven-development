@@ -56,6 +56,9 @@ class Game_Test(unittest.TestCase):
         
         
     def test_print_rules(self):
+        """
+        Tests that the print_rules() method prints out the correct statement.
+        """
         game = Game(None, None, None)
         expected_output = (
             "+----------------------------------------------------------------------+\n"
@@ -71,7 +74,53 @@ class Game_Test(unittest.TestCase):
         with patch('sys.stdout', new=io.StringIO()) as fake_out:
             game.print_rules()
             self.assertEqual(fake_out.getvalue(), expected_output)
+            
+    def test_separator(self):
+        """
+        Test that the separator() method prints out a dotted line.
+        """
+        game = Game("Player1", "Player2", "easy")
+        expected_output = "\n------------------------------------------------------------------\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            game.seperator()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+   
+    @patch('builtins.input')
+    def test_setup_game_player_versus_cpu(self, mock_input):
+        """
+        Tests if the setup_game() method correctly directs the user to the 
+        single player mode based on their input. It uses the unittest.mock module 
+        to mock the input() function and simulate user input. It also uses 
+        MagicMock to mock the player_versus_cpu() method and checks if it 
+        was called once.
+        """
 
+        mock_input.side_effect = ["1", "TestPlayer"]
 
+        game = Game(None, None, None)
+        game.player_versus_cpu = MagicMock()
+
+        game.setup_game()
+
+        game.player_versus_cpu.assert_called_once()
+
+    @patch('builtins.input')
+    def test_setup_game_player_versus_player(self, mock_input):
+        """
+        Tests if the setup_game() method correctly directs the user to the 
+        multiplayer mode based on their input. It uses the unittest.mock module 
+        to mock the input() function and simulate user input. It also uses 
+        MagicMock to mock the player_versus_player() method and checks if it 
+        was called once.
+        """
+        mock_input.side_effect = ["2", "PlayerOne", "PlayerTwo"]
+
+        game = Game(None, None, None)
+        game.player_versus_player = MagicMock()
+
+        game.setup_game()
+
+        game.player_versus_player.assert_called_once()
+        
 if __name__ == "__main__":
     unittest.main()
