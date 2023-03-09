@@ -1,8 +1,8 @@
+import sys
+sys.path.append("pig")
 """
 Importing necessary modules for testing Dice class
 """
-import sys
-sys.path.append("pig")
 import unittest
 from pig.dice import Dice
 

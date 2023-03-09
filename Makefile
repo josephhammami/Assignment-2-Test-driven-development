@@ -70,6 +70,17 @@ flake8:
 
 lint: flake8 pylint
 
+
+# ---------------------------------------------------------
+# Work with codestyle.
+#
+black:
+	@$(call MESSAGE,$@)
+	 $(PYTHON) -m black pig/ test/
+
+codestyle: black
+
+
 # ---------------------------------------------------------
 # Work with unit test and code coverage.
 #

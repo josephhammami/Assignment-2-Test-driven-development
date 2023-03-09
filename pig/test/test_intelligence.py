@@ -6,7 +6,6 @@ import random
 from unittest.mock import patch
 from pig.intelligence import Intelligence
 
-
 class IntelligenceTest(unittest.TestCase):
     """A class containing unit tests for the Intelligence class."""
     def setUp(self):
