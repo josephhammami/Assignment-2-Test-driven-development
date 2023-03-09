@@ -31,6 +31,27 @@ class HighScoreTest(unittest.TestCase):
         self.highscore.set_record_player_one(20)
         self.assertEqual(self.highscore.get_record_player_one(), 20)
 
+    def test_get_record_player_one_singleplayer(self):
+        """
+        Test that get_record_player_one_singleplayer returns the correct record.
+        """
+        self.highscore.set_record_player_one_singleplayer(10)
+        self.assertEqual(self.highscore.get_record_player_one_singleplayer(), 10)
+    
+    def test_get_record_player_one(self):
+        """
+        Test that get_record_player_one returns the correct record.
+        """
+        self.highscore.set_record_player_one(20)
+        self.assertEqual(self.highscore.get_record_player_one(), 20)
+
+    def test_get_record_player_two(self):
+        """
+        Test that get_record_player_two returns the correct record.
+        """
+        self.highscore.set_record_player_two(30)
+        self.assertEqual(self.highscore.get_record_player_two(), 30)
+
     def test_set_record_player_two(self):
         """
         Test that set_record_player_two sets the correct record.
