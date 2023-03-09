@@ -3,13 +3,14 @@ Random is imported to decide what the CPU rolls on the die.
 """
 import random
 
+
 class Intelligence:
     """
-    This class will hold the core functionalities for the CPU in our dice game. 
+    This class will hold the core functionalities for the CPU in our dice game.
     """
 
     def __init__(self, level):
-        """ 
+        """
         Initializes an Intelligence object with the given level and a CPU score of 0.
         """
         self.level = level
@@ -28,15 +29,15 @@ class Intelligence:
         """
 
         if self.level == "easy".lower():
-            cpu_roll = random.randint(1,3)
+            cpu_roll = random.randint(1, 3)
 
         elif self.level == "medium".lower():
-            cpu_roll = random.randint(1,6)
+            cpu_roll = random.randint(1, 6)
             if self.cpu_score + cpu_roll > 6:
                 cpu_roll = 6 - self.cpu_score
 
         elif self.level == "hard".lower():
-            cpu_roll = random.randint(1,10)
+            cpu_roll = random.randint(1, 10)
             if cpu_roll > 6:
                 cpu_roll = 6
             if self.cpu_score + cpu_roll > 6:

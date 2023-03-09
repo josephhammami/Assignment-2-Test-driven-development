@@ -11,8 +11,9 @@ class Shell(cmd.Cmd):
     """
     The main command line interface for our Pig Game.
     """
+
     intro = "Welcome to the Pig game! Type '?' for gameplay options.\n1. Start a new game\n2. Quit\n"
-    new_game =  "1. Start a new game"
+    new_game = "1. Start a new game"
     quit_game = "2. Quit"
     prompt = ">> "
 
@@ -48,7 +49,7 @@ class Shell(cmd.Cmd):
         """
         Displays keybinds the user can use during the game.
         """
-        #Cheating is now allowed against other players
+        # Cheating is now allowed against other players
         print("\n+-------------------------------------------------+")
         print("|                  Information                    |")
         print("+-------------------------------------------------+")
@@ -77,6 +78,7 @@ class Shell(cmd.Cmd):
         """
         print("Thanks for playing our game!")
         exit()
+
 
 if __name__ == "__main__":
     shell = Shell()

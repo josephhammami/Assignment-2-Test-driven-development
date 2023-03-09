@@ -4,6 +4,7 @@ who rolled the die.
 """
 from dice import Dice
 
+
 class DiceHand:
     """
     This class will keep track of the player score
@@ -33,11 +34,15 @@ class DiceHand:
 
         if self.player_roll == 1:
             self.player_score = 0
-            print(f"\nUhoh {player} rolled a {self.player_roll}! They lose all their points!")
+            print(
+                f"\nUhoh {player} rolled a {self.player_roll}! They lose all their points!"
+            )
 
         else:
             self.player_score += self.player_roll
-            print(f"{player} rolled a {self.player_roll}. Their total score is {self.player_score}!")
+            print(
+                f"{player} rolled a {self.player_roll}. Their total score is {self.player_score}!"
+            )
 
     def hold(self, player):
         """

@@ -7,15 +7,12 @@ And storing the players records.
 """
 
 
-class HighScore():
+class HighScore:
     """A class representing the high score table for our dice game."""
 
     def __init__(
-            self,
-            record_player_one,
-            record_player_two,
-            record_player_one_singleplayer
-            ):
+        self, record_player_one, record_player_two, record_player_one_singleplayer
+    ):
         """Construct a new high score object for each available player."""
         self.record_player_one_singleplayer = record_player_one_singleplayer
         self.record_player_one = record_player_one
@@ -51,8 +48,10 @@ class HighScore():
 
         or the new record is less than the current one.
         """
-        if (self.record_player_one_singleplayer == 0 or
-                new_record < self.record_player_one_singleplayer):
+        if (
+            self.record_player_one_singleplayer == 0
+            or new_record < self.record_player_one_singleplayer
+        ):
             self.set_record_player_one_singleplayer(new_record)
 
     def add_record_player_one(self, new_record_one):
@@ -61,8 +60,7 @@ class HighScore():
 
         or the new record is less than the current one.
         """
-        if (self.record_player_one == 0 or
-                new_record_one < self.record_player_one):
+        if self.record_player_one == 0 or new_record_one < self.record_player_one:
             self.set_record_player_one(new_record_one)
 
     def add_record_player_two(self, new_record_two):
@@ -72,8 +70,7 @@ class HighScore():
         Add a new record for the player if the current record is set at 0
         or the new record is less than the current one.
         """
-        if (self.record_player_two == 0 or
-                new_record_two < self.record_player_two):
+        if self.record_player_two == 0 or new_record_two < self.record_player_two:
             self.set_record_player_two(new_record_two)
 
     def print_highscore_singleplayer(self, player_one, new_record_one):
@@ -89,14 +86,12 @@ class HighScore():
         print("-----------------------")
         print("| {:<10} | {:<6} |".format("Player", "Record"))
         print("-----------------------")
-        print("| {:<10} | {:<6} |".format(
-            str(player_one), str(new_record_one))
-            )
+        print("| {:<10} | {:<6} |".format(str(player_one), str(new_record_one)))
         print("-----------------------")
 
     def print_highscore_multiplayer(
-            self, player_one, player_two, new_record_one, new_record_two
-            ):
+        self, player_one, player_two, new_record_one, new_record_two
+    ):
         """
         Print highscore for multiplayers.
 
@@ -109,8 +104,6 @@ class HighScore():
         print("----------------------")
         print("| {:<10} | {:<6} |".format("Player", "Record"))
         print("----------------------")
-        print("| {:<10} | {:<6} |".format(
-            str(player_one), str(new_record_one)))
-        print("| {:<10} | {:<6} |".format(
-            str(player_two), str(new_record_two)))
+        print("| {:<10} | {:<6} |".format(str(player_one), str(new_record_one)))
+        print("| {:<10} | {:<6} |".format(str(player_two), str(new_record_two)))
         print("----------------------")

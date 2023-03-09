@@ -6,7 +6,9 @@ import io
 import unittest
 from unittest.mock import patch
 from pig.highscore import HighScore
+
 sys.path.append("pig")
+
 
 class HighScoreTest(unittest.TestCase):
     """
@@ -91,12 +93,12 @@ class HighScoreTest(unittest.TestCase):
         self.highscore.add_record_player_two(25)
         self.assertEqual(self.highscore.get_record_player_two(), 15)
 
-    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch("sys.stdout", new_callable=io.StringIO)
     def test_print_highscore_singleplayer(self, mock_stdout):
         """
         Tests the print_highscore_singleplayer() method.
 
-        This method tests whether the print_highscore_singleplayer() method 
+        This method tests whether the print_highscore_singleplayer() method
         correctly prints out a high score table for a single player game.
 
         Args:
@@ -114,30 +116,32 @@ class HighScoreTest(unittest.TestCase):
         highscore.print_highscore_singleplayer(player_one, new_record_one)
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
-    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch("sys.stdout", new_callable=io.StringIO)
     def test_print_highscore_multiplayer(self, mock_stdout):
         """
-    Tests the print_highscore_multiplayer() method.
+        Tests the print_highscore_multiplayer() method.
 
-    This method tests whether the print_highscore_multiplayer() method 
-    correctly prints out a high score table for a multiplayer game.
+        This method tests whether the print_highscore_multiplayer() method
+        correctly prints out a high score table for a multiplayer game.
 
-    Args:
-        self (TestHighScore): The TestHighScore instance.
-        mock_stdout (io.StringIO): The mocked standard output stream.
+        Args:
+            self (TestHighScore): The TestHighScore instance.
+            mock_stdout (io.StringIO): The mocked standard output stream.
 
-    Returns:
-        None.
-    """
+        Returns:
+            None.
+        """
         highscore = HighScore(0, 0, 0)
         player_one = "Alice"
         player_two = "Bob"
         new_record_one = 10
         new_record_two = 15
         expected_output = "High Scores Table\n----------------------\nMultiplayer Mode:\n----------------------\n| Player     | Record |\n----------------------\n| Alice      | 10     |\n| Bob        | 15     |\n----------------------\n"
-        highscore.print_highscore_multiplayer(player_one, player_two,
-                                               new_record_one, new_record_two)
+        highscore.print_highscore_multiplayer(
+            player_one, player_two, new_record_one, new_record_two
+        )
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
