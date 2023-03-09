@@ -37,7 +37,7 @@ class HighScoreTest(unittest.TestCase):
         """
         self.highscore.set_record_player_one_singleplayer(10)
         self.assertEqual(self.highscore.get_record_player_one_singleplayer(), 10)
-    
+
     def test_get_record_player_one(self):
         """
         Test that get_record_player_one returns the correct record.

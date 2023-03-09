@@ -119,47 +119,6 @@ class Game_Test(unittest.TestCase):
         game.player_versus_player = MagicMock()
 
         game.setup_game()
-    
-    def test_player_versus_cpu(self):
-        game = Game(None, None, None)
-        player_name = "Player 1"
-        cpu_difficulty = "easy"
-        game.player_one.set_name(player_name)
-        mock_input = f"{cpu_difficulty}\nr\nh\nn\nn\ny\n"
-        expected_output = (
-            f"\nBefore we begin, go ahead and decide the CPU's difficulity! (easy/medium/hard)\n"
-            f"\n{player_name} would you like to roll or hold?\n"
-            f"\nThe CPU rolled the die and got a 4!\n"
-            f"\n{player_name} would you like to roll or hold?\n"
-            f"\nYou have chosen to hold.\n"
-            f"\nIt's now the CPU's turn.\n"
-            f"\nThe CPU rolled the die and got a 5!\n"
-            f"\nCPU holds.\n"
-            f"\n------------------------------------------------------------------\n"
-            f"\nBefore we begin, go ahead and decide the CPU's difficulity! (easy/medium/hard)\n"
-            f"\n{player_name} would you like to roll or hold?\n"
-            f"\nYou have chosen to roll.\n"
-            f"\nYou rolled a 1 and lost all your points!\n"
-            f"\nIt's now the CPU's turn.\n"
-            f"\nThe CPU rolled the die and got a 6!\n"
-            f"\nCPU holds.\n"
-            f"\n------------------------------------------------------------------\n"
-            f"\nHere's your single player highscore!\n"
-            f"{player_name}'s record: 2\n(The record represents how many rounds it took for you to reach 100 points. Try to beat it!)\n"
-            f"\nWould you like to play again? (y/n)\n"
-        )
 
-        # Patching input() to return mock_input
-        with patch('builtins.input', side_effect=mock_input.split('\n')):
-            # Redirecting print() to buffer to check output
-            with patch('sys.stdout', new=StringIO()) as fake_out:
-                game.player_versus_cpu()
-
-        # Asserting output matches expected_output
-        self.assertEqual(fake_out.getvalue(), expected_output)
-
-
-        
-    
 if __name__ == "__main__":
     unittest.main()

@@ -1,11 +1,15 @@
+"""
+Importing necessary modules for testing
+"""
 import unittest
-# Use unittest.mock to imitate player's input.
 from unittest.mock import patch
-
 from Player import Player
 
 
 class TestPlayer(unittest.TestCase):
+    """
+    Testing the Player Class
+    """
 
     def setUp(self):
         """
