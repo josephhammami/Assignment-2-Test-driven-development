@@ -1,18 +1,36 @@
-import unittest
+"""
+Importing necessary modules for testing Dice class
+"""
 
-from Dice import dice
+import unittest
+from Dice import Dice
 
 
 class TestDice(unittest.TestCase):
+    """
+    Testing the Dice class
+    """
+
     def setUp(self):
-        self.d = dice()
+        """
+        Setting up the Dice object for testing
+        """
+        self.dice = Dice()
 
     def test_The_roll(self):
-        roll_test = self.d.roll()
+        """
+        Testing that a random die is being rolled from 1,6
+        """
+
+        roll_test = self.dice.roll()
         self.assertTrue(roll_test >= 1 and roll_test <= 6)
 
     def test_get_roll(self):
-        roll_test = self.d.get_roll()
+        """
+        Controlling the dice roll to make sure it is between 1,6
+        """
+
+        roll_test = self.dice.get_roll()
         self.assertTrue(roll_test <= 6 and roll_test >= 1)
 
 
