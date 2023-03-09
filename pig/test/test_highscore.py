@@ -2,11 +2,11 @@
 Test the functionality of the HighScore class.
 """
 import sys
-sys.path.append("pig")
 import io
 import unittest
 from unittest.mock import patch
 from pig.highscore import HighScore
+sys.path.append("pig")
 
 class HighScoreTest(unittest.TestCase):
     """

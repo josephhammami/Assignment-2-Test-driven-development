@@ -1,10 +1,10 @@
 """A class containing unit tests for the Intelligence class."""
 import sys
-sys.path.append("pig")
 import unittest
 import random
 from unittest.mock import patch
 from pig.intelligence import Intelligence
+sys.path.append("pig")
 
 class IntelligenceTest(unittest.TestCase):
     """A class containing unit tests for the Intelligence class."""

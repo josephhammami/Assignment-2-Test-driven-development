@@ -1,10 +1,11 @@
+"""Necessary modules for testing Game Class"""
 import sys
-sys.path.append("pig")
 import unittest
 import io
 from unittest.mock import patch, MagicMock
 from io import StringIO
 from pig.game import Game
+sys.path.append("pig")
 
 
 class Game_Test(unittest.TestCase):

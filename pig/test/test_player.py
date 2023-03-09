@@ -1,9 +1,9 @@
 """Importing necessary modules for testing."""
 import sys
-sys.path.append("pig")
 import unittest
 from unittest.mock import patch
 from pig.player import Player
+sys.path.append("path")
 
 
 class TestPlayer(unittest.TestCase):
