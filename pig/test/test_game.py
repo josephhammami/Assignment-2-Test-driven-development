@@ -1,4 +1,4 @@
-"""Necessary modules for testing Game Class"""
+"""Necessary modules for testing Game Class."""
 import sys
 import unittest
 import io
@@ -10,14 +10,10 @@ sys.path.append("pig")
 
 
 class GameTest(unittest.TestCase):
-    """
-    A test suite for the Game class.
-    """
+    """Testing the Game Class."""
 
     def test_init_objects(self):
-        """
-        Test that initializing a Game object sets the player names and CPU level correctly.
-        """
+        """Test that initializing a Game object sets the player names and CPU level correctly."""
         new_game = Game("Name1", "Name2", "easy")
         self.assertEqual(new_game.player_one, "Name1")
         self.assertEqual(new_game.player_two, "Name2")
@@ -25,9 +21,7 @@ class GameTest(unittest.TestCase):
 
     @patch("random.randint", return_value=1)
     def test_cpu_turn_roll(self, mock_randint):
-        """
-        Test that the cpu_turn() method correctly calls cpu_rolling() when a 1 is generated.
-        """
+        """Test that the cpu_turn() method correctly calls cpu_rolling() when a 1 is generated."""
         game = Game("", "", "")
         game.cpu_level = MagicMock()
         game.cpu_turn()
@@ -35,9 +29,7 @@ class GameTest(unittest.TestCase):
 
     @patch("random.randint", return_value=2)
     def test_cpu_turn_hold(self, mock_randint):
-        """
-        Test that the cpu_turn() method correctly calls cpu_hold() when a 2 is generated.
-        """
+        """Test that the cpu_turn() method correctly calls cpu_hold() when a 2 is generated."""
         game = Game("", "", "")
         game.cpu_level = MagicMock()
         game.cpu_turn()
@@ -45,9 +37,7 @@ class GameTest(unittest.TestCase):
 
     @patch("sys.stdout", new_callable=StringIO)
     def test_cheat(self, mock_stdout):
-        """
-        Test that the cheat() method correctly sets the player score to 100 and prints a message.
-        """
+        """Test that the cheat() method sets the player score to 100 and prints a message."""
         game = Game(None, None, None)
         player_name = "Joseph"
         player_score = 0
@@ -57,9 +47,7 @@ class GameTest(unittest.TestCase):
         self.assertEqual(new_score, 100)
 
     def test_print_rules(self):
-        """
-        Tests that the print_rules() method prints out the correct statement.
-        """
+        """Tests that the print_rules() method prints out the correct statement."""
         game = Game(None, None, None)
         expected_output = (
             "+----------------------------------------------------------------------+\n"
@@ -77,9 +65,7 @@ class GameTest(unittest.TestCase):
             self.assertEqual(fake_out.getvalue(), expected_output)
 
     def test_separator(self):
-        """
-        Test that the separator() method prints out a dotted line.
-        """
+        """Test that the separator() method prints out a dotted line."""
         game = Game("Player1", "Player2", "easy")
         expected_output = (
             "\n------------------------------------------------------------------\n"
@@ -90,14 +76,7 @@ class GameTest(unittest.TestCase):
 
     @patch("builtins.input")
     def test_setup_game_player_versus_cpu(self, mock_input):
-        """
-        Tests if the setup_game() method correctly directs the user to the
-        single player mode based on their input. It uses the unittest.mock module
-        to mock the input() function and simulate user input. It also uses
-        MagicMock to mock the player_versus_cpu() method and checks if it
-        was called once.
-        """
-
+        """Tests if the setup_game() method directs the user to the single player mode."""
         mock_input.side_effect = ["1", "TestPlayer"]
 
         game = Game(None, None, None)
@@ -109,13 +88,7 @@ class GameTest(unittest.TestCase):
 
     @patch("builtins.input")
     def test_setup_game_player_versus_player(self, mock_input):
-        """
-        Tests if the setup_game() method correctly directs the user to the
-        multiplayer mode based on their input. It uses the unittest.mock module
-        to mock the input() function and simulate user input. It also uses
-        MagicMock to mock the player_versus_player() method and checks if it
-        was called once.
-        """
+        """Tests if the setup_game() method directs the user to the multiplayer mode."""
         mock_input.side_effect = ["2", "PlayerOne", "PlayerTwo"]
 
         game = Game(None, None, None)
