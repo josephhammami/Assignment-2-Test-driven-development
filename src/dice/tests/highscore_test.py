@@ -138,5 +138,4 @@ class HighScoreTest(unittest.TestCase):
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
 if __name__ == '__main__':
-    unittest.main
-    
+    unittest.main()
