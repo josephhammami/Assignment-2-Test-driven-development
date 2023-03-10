@@ -1,8 +1,4 @@
-"""
-This class will hold the core functionalities of the player (user), playing.
-
-our dice game.
-"""
+"""This class will hold the functionalities of the player in our dice game."""
 
 
 class Player:
@@ -17,19 +13,15 @@ class Player:
         self.name = new_name
 
     def get_name(self):
-        """Get the name of the current player."""
+        """Get the name of the current player in this method."""
         return self.name
 
     def choose_name(self):
-        """Allow the player to choose aname by entering it at the prompt."""
+        """Allow the player to choose the name in this method."""
         name = input(">> ")
         self.set_name(name)
 
     def change_name(self):
-        """
-        Allow the user to change their name by entering a new name at the.
-
-        given prompt.
-        """
+        """Allow the user to change the name in this method."""
         new_name = input(">> ")
         self.set_name(new_name)
