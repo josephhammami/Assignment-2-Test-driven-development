@@ -2,6 +2,7 @@
 import sys
 import unittest
 from unittest.mock import patch
+sys.path.append("pig")
 from pig.player import Player
 
 sys.path.append("path")
