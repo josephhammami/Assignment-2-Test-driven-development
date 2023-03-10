@@ -53,7 +53,10 @@ class Intelligence:
 
         else:
             self.cpu_score += cpu_roll
-            print(f"\nCPU rolled a {cpu_roll}. Its total score is {self.cpu_score}!")
+            print(
+                    f"\nCPU rolled a {cpu_roll}. "
+                    f"Its total score is {self.cpu_score}!"
+                )
 
     def cpu_hold(self):
         """
@@ -62,4 +65,7 @@ class Intelligence:
         Instructs the CPU to hold its current score
         and prints a message indicating the score.
         """
-        print(f"\nCPU is holding. Current score of the CPU is {self.cpu_score}.")
+        print(
+            f"\nCPU is holding."
+            f"Current score of the CPU is {self.cpu_score}."
+            )

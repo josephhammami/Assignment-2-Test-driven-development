@@ -11,7 +11,10 @@ class HighScore:
     """A class representing the high score table for our dice game."""
 
     def __init__(
-        self, record_player_one, record_player_two, record_player_one_singleplayer
+        self,
+        record_player_one,
+        record_player_two,
+        record_player_one_singleplayer
     ):
         """Construct a new high score object for each available player."""
         self.record_player_one_singleplayer = record_player_one_singleplayer
@@ -60,7 +63,8 @@ class HighScore:
 
         or the new record is less than the current one.
         """
-        if self.record_player_one == 0 or new_record_one < self.record_player_one:
+        if (self.record_player_one == 0 or
+                new_record_one < self.record_player_one):
             self.set_record_player_one(new_record_one)
 
     def add_record_player_two(self, new_record_two):
@@ -70,7 +74,8 @@ class HighScore:
         Add a new record for the player if the current record is set at 0
         or the new record is less than the current one.
         """
-        if self.record_player_two == 0 or new_record_two < self.record_player_two:
+        if (self.record_player_two == 0 or
+                new_record_two < self.record_player_two):
             self.set_record_player_two(new_record_two)
 
     def print_highscore_singleplayer(self, player_one, new_record_one):
@@ -84,9 +89,9 @@ class HighScore:
         print("-----------------------")
         print("Single Player Mode:")
         print("-----------------------")
-        print("| {:<10} | {:<6} |".format("Player", "Record"))
+        print(f"| {'Player':<10} | {'Record':<6} |")
         print("-----------------------")
-        print("| {:<10} | {:<6} |".format(str(player_one), str(new_record_one)))
+        print(f"| {str(player_one):<10} | {str(new_record_one):<6} |")
         print("-----------------------")
 
     def print_highscore_multiplayer(
@@ -102,8 +107,8 @@ class HighScore:
         print("----------------------")
         print("Multiplayer Mode:")
         print("----------------------")
-        print("| {:<10} | {:<6} |".format("Player", "Record"))
+        print(f"| {'Player':<10} | {'Record':<6} |")
         print("----------------------")
-        print("| {:<10} | {:<6} |".format(str(player_one), str(new_record_one)))
-        print("| {:<10} | {:<6} |".format(str(player_two), str(new_record_two)))
+        print(f"| {str(player_one):<10} | {str(new_record_one):<6} |")
+        print(f"| {str(player_two):<10} | {str(new_record_two):<6} |")
         print("----------------------")
