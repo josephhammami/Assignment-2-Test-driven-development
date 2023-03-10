@@ -10,7 +10,7 @@ class Game:
     """This class holds the core functionalities of our dice game."""
 
     def __init__(self, player_one, player_two, cpu_level):
-        """Construct objects from the 'Player' and 'Intelligence' classes with this method."""
+        """Construct objects from modules with this method."""
         self.player_one = player_one
         self.player_two = player_two
         self.cpu_level = cpu_level
@@ -52,7 +52,7 @@ class Game:
 
         self.print_rules()
 
-        print("\nAre you playing against the CPU or a friend? (1 or 2 respectively)")
+        print("\nAre you playing against the CPU or a friend? (1 or 2)")
         option = input(">> ")
 
         if option == "1":
@@ -84,7 +84,7 @@ class Game:
 
             while True:
                 print(
-                    "\nNow, go ahead and decide the CPU's difficulity!(easy/medium/hard)"
+                    "\nChoose CPU difficulty! (easy/medium/hard)"
                 )
                 cpu_difficulty = input(">> ")
 
@@ -97,7 +97,7 @@ class Game:
                     continue
 
             while True:
-                print(f"\n{self.player_one.get_name()} would you like to roll or hold?")
+                print(f"\n{self.player_one.get_name()}, roll or hold?")
                 action = input(">> ")
 
                 if action.lower() == "r":
@@ -193,7 +193,7 @@ class Game:
 
             while True:
 
-                print(f"{self.player_one.get_name()} would you like to roll or hold?")
+                print(f"{self.player_one.get_name()}, roll or hold?")
                 action_player_one = input(">> ")
                 self.seperator()
 
@@ -208,7 +208,7 @@ class Game:
                         break
 
                     print(
-                        f"{self.player_two.get_name()} would you like to roll or hold?"
+                        f"{self.player_two.get_name()}, roll or hold?"
                     )
                     action_player_two = input(">> ")
                     self.seperator()
@@ -232,7 +232,7 @@ class Game:
 
                     elif action_player_two.lower() == "n":
                         print(
-                            f"\n {self.player_two.get_name()}, go ahead and change your name!"
+                            f"\n {self.player_two.get_name()}, enter new name:"
                         )
                         self.player_two.change_name()
                         self.seperator()
@@ -250,7 +250,7 @@ class Game:
 
                 elif action_player_one.lower() == "n":
                     print(
-                        f"\n {self.player_one.get_name()}, go ahead and change your name!"
+                        f"\n {self.player_one.get_name()}, enter new name:"
                     )
                     self.player_one.change_name()
                     self.seperator()
@@ -289,11 +289,11 @@ class Game:
                     print("Please enter a valid input!")
 
     def cheat(self, player_name, player_score):
-        """Implement the cheating functionality which gives player 100 points with this method."""
+        """Cheating function to give player 100 points with this method."""
         player_score = 100
         print(f"{player_name} cheated and won the game!")
         return player_score
 
     def seperator(self):
-        """Print a dotted line that separates the players actions in this method."""
-        print("\n------------------------------------------------------------------")
+        """Print a dotted line that separates player actions in this method."""
+        print("\n------------------------------------------------------------")
