@@ -1,10 +1,11 @@
-import sys
-sys.path.append("pig")
 """
 Importing necessary modules for testing Dice class
 """
+import sys
 import unittest
 from pig.dice import Dice
+
+sys.path.append("pig")
 
 
 class TestDice(unittest.TestCase):
@@ -35,5 +36,5 @@ class TestDice(unittest.TestCase):
         self.assertTrue(roll_test <= 6 and roll_test >= 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -4,9 +4,7 @@
 
 
 [FORMAT]
-
-# Maximum number of characters on a single line.
-#max-line-length=79
+max-line-length = 79
 
 
 [REPORTS]
@@ -16,3 +14,4 @@
 [MASTER]
 #ignore=*_test.py
 #ignore-patterns=*_test.py
+init-hook='import sys; sys.path.append(".")

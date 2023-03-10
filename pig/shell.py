@@ -1,54 +1,40 @@
-"""
-The cmd module allows use to create an interactive environment inside the command line. 
-The Game class holds the core functionalities of our game and is implemented to run
-the different methods through our shell interface.
-"""
+"""The cmd module allows use to create an interactive environment."""
 import cmd
 from game import Game
 
 
 class Shell(cmd.Cmd):
-    """
-    The main command line interface for our Pig Game.
-    """
-    intro = "Welcome to the Pig game! Type '?' for gameplay options.\n1. Start a new game\n2. Quit\n"
-    new_game =  "1. Start a new game"
+    """The main command line interface for our Pig Game."""
+
+    intro = "Welcome! Type '?' for keybinds.\n1. Start game\n2. Quit\n"
+    new_game = "1. Start a new game"
     quit_game = "2. Quit"
     prompt = ">> "
 
     def __init__(self):
-        """
-        Initializes a new instance of the Shell class with an instance of the Game class.
-        """
+        """Initialize new instance of Shell and Game using this method."""
         super().__init__()
         self.game = Game(None, None, None)
 
     def default(self, line):
+        """Pass line to do_notify() to default shell with this method."""
         self.do_notify(line)
 
     def do_help(self, arg):
-        """
-        Calls the print_info method that displays information about the different keybinds.
-        """
+        """Display information by calling the print_info() with this method."""
         self.print_info()
 
     def do_1(self, arg):
-        """
-        Starts a new game by calling the setup_game method of the Game Class.
-        """
+        """Start new game by calling setup_game() of Game using this method."""
         self.game.setup_game()
 
     def do_2(self, arg):
-        """
-        Quits the game from the command line interface.
-        """
+        """Quits the game from the command line interface with this method."""
         return self.quit()
 
     def print_info(self):
-        """
-        Displays keybinds the user can use during the game.
-        """
-        #Cheating is now allowed against other players
+        """Display keybinds that the user can use using this method."""
+        # Cheating is now allowed against other players
         print("\n+-------------------------------------------------+")
         print("|                  Information                    |")
         print("+-------------------------------------------------+")
@@ -63,20 +49,17 @@ class Shell(cmd.Cmd):
         print("| \u2022 To cheat, press 'c' (singleplayer)            |")
         print("| \u2022 To exit the game, press 'e'                   |")
         print("+-------------------------------------------------+")
-        print("\nInitial highscore will be added when first ever game is played.")
+        print("\nInitial highscore will be added when the first game is over.")
 
     def do_notify(self, arg):
-        """
-        Displays an error message to the user if invalid input has been entered.
-        """
+        """Show error message to the user if invalid input with this method."""
         print("Invalid input, type '?' for gameplay options.")
 
     def quit(self):
-        """
-        The method that terminates the program from the command line interface.
-        """
+        """Terminates program from command line interface with this method."""
         print("Thanks for playing our game!")
         exit()
+
 
 if __name__ == "__main__":
     shell = Shell()

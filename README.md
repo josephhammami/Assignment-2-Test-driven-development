@@ -56,7 +56,7 @@ The project includes the following classes:
 
 ### Usage
 
-All classes and code are stored under `/src`
+All classes and code are stored under `/pig`
 
 To run the game, navigate to your project directory in your desired terminal and run the following command:
 
@@ -66,26 +66,26 @@ To run the game, navigate to your project directory in your desired terminal and
 
 To run the validators and check the source code, run these commands:
 
-- One at a time
-make flake8
-make pylint
+### One at a time
+    make flake8
+    make pylint
 
-- All at once
-make lint
+### All at once
+    make lint
 
 
 ## Unittests <a name = "unittests"></a>
 
 To run the unittest for the different classes, run these commands:
 
-- Unittests w/o coverage
-make unittest
+### Unittests w/o coverage
+    make unittest
 
-- Unittests with coverage
-make coverage
+### Unittests with coverage
+    make coverage
 
-- Linters and all above
-make test
+### Linters and all above
+    make test
 
 
 ## Authors <a name = "authors"></a>

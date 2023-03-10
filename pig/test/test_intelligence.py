@@ -1,13 +1,16 @@
 """A class containing unit tests for the Intelligence class."""
 import sys
-sys.path.append("pig")
 import unittest
 import random
 from unittest.mock import patch
 from pig.intelligence import Intelligence
 
+sys.path.append("pig")
+
+
 class IntelligenceTest(unittest.TestCase):
     """A class containing unit tests for the Intelligence class."""
+
     def setUp(self):
         """A set up method that creates an object of Intelligence class.
         It sets intellegence level to easy"""
@@ -42,20 +45,20 @@ class IntelligenceTest(unittest.TestCase):
 
     def test_cpu_rolling(self):
         """Tests the CPU rolling method."""
-        with patch('random.randint') as mock_randint:
+        with patch("random.randint") as mock_randint:
 
             mock_randint.return_value = 3
-            self.intelligence.set_level('easy')
+            self.intelligence.set_level("easy")
             self.intelligence.cpu_rolling()
             self.assertEqual(self.intelligence.cpu_score, 3)
 
             mock_randint.return_value = 6
-            self.intelligence.set_level('medium')
+            self.intelligence.set_level("medium")
             self.intelligence.cpu_rolling()
             self.assertLessEqual(self.intelligence.cpu_score, 6)
 
             mock_randint.return_value = 10
-            self.intelligence.set_level('hard')
+            self.intelligence.set_level("hard")
             self.intelligence.cpu_rolling()
             self.assertLessEqual(self.intelligence.cpu_score, 6)
 
@@ -65,5 +68,5 @@ class IntelligenceTest(unittest.TestCase):
         self.assertEqual(self.intelligence.cpu_score, 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
