@@ -56,7 +56,7 @@ The project includes the following classes:
 
 ### Usage
 
-All classes and code are stored under `/src`
+All classes and code are stored under `/pig`
 
 To run the game, navigate to your project directory in your desired terminal and run the following command:
 
