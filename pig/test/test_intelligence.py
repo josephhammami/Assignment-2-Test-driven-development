@@ -12,32 +12,41 @@ class IntelligenceTest(unittest.TestCase):
     """A class containing unit tests for the Intelligence class."""
 
     def setUp(self):
-        """A set up method that creates an object of Intelligence class.
-        It sets intellegence level to easy"""
+        """
+        Set up method that creates an object of Intelligence class.
 
+        It sets intellegence level to easy
+        """
         self.intelligence = Intelligence("easy")
 
     def test_set_level_easy(self):
-        """Test that the CPU can roll a random number between 1 and 3
-        (inclusive) when the level is set to "easy"."""
+        """
+        Test that the CPU can roll a random number between 1 and 3 (inclusive).
 
+        - when the level is set to "easy".
+        """
         random.seed(1)
         self.intelligence.cpu_rolling()
         self.assertIn(self.intelligence.cpu_score, range(4))
 
     def test_set_level_medium(self):
-        """Test that the CPU can roll a random number between 1 and 6
-        (inclusive) when the level is set to "medium"."""
+        """
+        Test that the CPU can roll a random number between 1 and 6 (inclusive).
+
+        - when the level is set to "medium".
+        """
         random.seed(1)
         self.intelligence.set_level("medium")
         self.intelligence.cpu_rolling()
         self.assertIn(self.intelligence.cpu_score, range(1, 7))
 
     def test_set_level_hard(self):
-        """Test that the CPU can roll a random number between 1 and 10,
-        inclusive, but if the number is greater than 6 it should be set to 6
-        when the level is set to "hard"."""
+        """
+        Test that the CPU can roll a random number between 1 and 10.
 
+        -but if the number is greater than 6 it should be set to 6
+        when the level is set to "hard".
+        """
         random.seed(1)
         self.intelligence.set_level("hard")
         self.intelligence.cpu_rolling()
